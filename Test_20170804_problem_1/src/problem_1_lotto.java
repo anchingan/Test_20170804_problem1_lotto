@@ -50,18 +50,20 @@ public class problem_1_lotto {
 				break;
 				
 			case 2: //開出樂透號碼及下注號碼。
-				int[] lottoNumbers = doLotto();
+//				int[] lottoNumbers = doLotto();
+				int[] lottoNumbers = {12, 13, 3, 4, 5};
 				System.out.print("\n本期開出號碼：");
 				for (int i = 0; i < 5; i++)
 					System.out.printf("%2d ", lottoNumbers[i]);
 				System.out.print("\n");
 				
-				int totalPrizeGet = 0, prizeType;
+				int prizeType;
 				int[] myNumbers = new int [5];
 				for (int i = 0; i < amount; i++) {
 					myNumbers = doLotto();
 					prizeType = match(myNumbers, lottoNumbers);
 					System.out.printf("您簽注的第%d組號碼為： ", (i + 1));
+					System.out.printf("您簽注的號碼為： ");
 					printLottoNumbers(myNumbers, prizeType);
 					System.out.print("\n");
 					prize[prizeType]++;
@@ -70,7 +72,12 @@ public class problem_1_lotto {
 				break;
 				
 			case 3: //計算獎金。
-				totalPrizeGet = (int)(prize[1] + prize[2] * 0.2 + prize[3] * 0.01) * totalPrize;
+				int totalPrizeGet = 0;
+				//若有得頭獎，得到全部獎金。(無論得到幾次頭獎)
+				if (prize[1] != 0)
+					totalPrizeGet += totalPrize;
+				totalPrizeGet += (int)(prize[2] * 0.2 * totalPrize);
+				totalPrizeGet += (int)(prize[3] * 0.01 * totalPrize);
 				cashOfPlayer += totalPrizeGet;
 				totalPrize -= totalPrizeGet;
 				System.out.printf("您總共得到%d元！\n持有資金剩餘%d元。", totalPrizeGet, cashOfPlayer);
