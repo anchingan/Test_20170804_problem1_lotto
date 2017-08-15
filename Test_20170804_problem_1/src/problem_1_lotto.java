@@ -1,6 +1,7 @@
 /*
  * Test 20170804 第一次評測上機考
  * Problem_1 模擬樂透中獎
+ * 訂正版
  */
 
 import java.util.Scanner;
@@ -50,8 +51,7 @@ public class problem_1_lotto {
 				break;
 				
 			case 2: //開出樂透號碼及下注號碼。
-//				int[] lottoNumbers = doLotto();
-				int[] lottoNumbers = {12, 13, 3, 4, 5};
+				int[] lottoNumbers = doLotto();
 				System.out.print("\n本期開出號碼：");
 				for (int i = 0; i < 5; i++)
 					System.out.printf("%2d ", lottoNumbers[i]);
@@ -156,8 +156,5 @@ public class problem_1_lotto {
 		else 
 			System.out.printf("......恭喜您！中%s", prizeName[prizeType]);
 	}
-	
-	
-	
 
 }
